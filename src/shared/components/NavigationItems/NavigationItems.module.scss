@@ -1,0 +1,10 @@
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--color-box-shadow);
+}
+
+.tab {
+    border-color: var(--color-border);
+}
