@@ -4,16 +4,14 @@ import { NavigationItems } from '../NavigationItems';
 
 //styles
 import styles from './Header.module.scss';
-import logo from 'src/logo.svg';
+import logo from '../../../logo.svg';
 
 const Header: FC = ({ children }) => {
     return (
-        <>
-            <header className="header">
-                <img src={logo} width="80" />
-                <NavigationItems />
-            </header>
-        </>
+        <header className={styles.header}>
+            <img src={logo} className={styles.logo} />
+            <NavigationItems />
+        </header>
     );
 };
 

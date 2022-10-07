@@ -1,21 +1,17 @@
-import { FC } from 'react';
-//components
-import { Header } from '../Header';
-import { Footer } from '../Footer';
+import { FC, ReactNode } from 'react';
 //styles
-import styles from './Layout.module.scss';
+import styles from './PageLayout.module.scss';
 
-const PageLayout: FC = (props) => {
-    const { children } = props;
+interface IPageLayout {
+    content: ReactNode;
+}
+
+const PageLayout: FC<IPageLayout> = (props) => {
+    const { content } = props;
 
     return (
-        <main>
-            <div className={styles.pageLayout}>
-                <Header />
-                {/* context here */}
-                {children}
-                <Footer />
-            </div>
+        <main className={styles.mainContainer}>
+            <div className={styles.content}>{content}</div>
         </main>
     );
 };

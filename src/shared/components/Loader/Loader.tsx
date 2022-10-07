@@ -1,6 +1,6 @@
 import { FC } from 'react';
 //styles
-import loaderImage from '../../../assets/images/loader.svg';
+import loaderImage from '../../../assets/icons/loader.svg';
 import styles from './Loader.module.scss';
 
 const Loader: FC = ({ children }) => {
