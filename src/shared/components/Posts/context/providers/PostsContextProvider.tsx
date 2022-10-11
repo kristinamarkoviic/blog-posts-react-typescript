@@ -18,7 +18,7 @@ const PostsContextProvider: FC = (props) => {
 
     const handleSearchPosts = (post: string) => {
         const searchedPost = filteredPosts.filter((item) =>
-            item.title.toLowerCase().includes(post.toLowerCase())
+            item.title.toLowerCase().trim().includes(post.toLowerCase().trim())
         );
         setFilteredPost(searchedPost);
     };
