@@ -5,7 +5,7 @@ import { INavigationLink } from 'shared/interfaces';
 import { menuItems } from 'shared/constants/navigationItems';
 //styles
 import styles from './NavigationItems.module.scss';
-import { Tabs, ListItemText, ListItemButton } from '@mui/material';
+import { ListItemText, ListItemButton } from '@mui/material';
 
 const NavigationItems: FC = ({ children }) => {
     const [routes, setRoutes] = useState<INavigationLink[]>(menuItems);

@@ -1,6 +1,14 @@
+@use 'styles/media' as *;
 .search {
+    width: 400px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-bottom: 10px;
+
+    @media screen and (max-width: $tablet) {
+        width: 300px;
+    }
 }
 
 .bar {
@@ -23,6 +31,6 @@
 
     &:hover {
         cursor: pointer;
-        background-color: var(--white);
+        background-color: var(--tertiary);
     }
 }

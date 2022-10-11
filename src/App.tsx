@@ -9,7 +9,7 @@ import { RoutesEnum } from 'shared/enums/RoutesEnum';
 //styles
 import styles from './App.scss';
 
-function App() {
+const App: FC = () => {
     return (
         <>
             <BrowserRouter>
@@ -26,6 +26,6 @@ function App() {
             </BrowserRouter>
         </>
     );
-}
+};
 
 export default App;

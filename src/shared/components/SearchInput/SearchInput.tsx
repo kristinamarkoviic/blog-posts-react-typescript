@@ -1,17 +1,18 @@
-import { FC, useState, ChangeEvent } from 'react';
+import { FC, useState, ChangeEvent, useContext } from 'react';
+//context
+import { PostsContext } from '../Posts/context/PostsContext';
 //styles
 import styles from './SearchInput.module.scss';
 
 const SearchInput: FC = ({ children }) => {
     const [params, setParams] = useState<string>('');
 
+    const { handleSearchPosts } = useContext(PostsContext);
+
     const inputChangedHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setParams(e.target.value);
-    };
-
-    const handleSearch = async (params: string) => {
-        if (!params) return;
-        setParams('');
+        if (e.target.value.length < 3) return;
+        handleSearchPosts(e.target.value);
     };
 
     return (
@@ -25,7 +26,7 @@ const SearchInput: FC = ({ children }) => {
                 />
                 <button
                     className={styles.button}
-                    onClick={() => handleSearch(params)}>
+                    onClick={() => handleSearchPosts(params)}>
                     Search
                 </button>
             </section>

@@ -1,11 +1,10 @@
 import { FC } from 'react';
 //components
 import { PageLayout } from '../PageLayout';
-//styles
-import styles from './Posts.module.scss';
+import { PostsFilter } from './components/PostsFilter';
 
-const Posts: FC = ({ children }) => {
-    return <PageLayout content={<h1>Posts page (Home)</h1>} />;
+const Posts: FC = (posts) => {
+    return <PageLayout content={<PostsFilter />} />;
 };
 
 export default Posts;
