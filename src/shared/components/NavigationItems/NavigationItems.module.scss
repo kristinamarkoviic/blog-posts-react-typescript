@@ -1,10 +1,28 @@
 .navigation {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     box-shadow: var(--color-box-shadow);
+
+    a {
+        text-decoration: none;
+    }
 }
 
-.tab {
-    border-color: var(--color-border);
+.navTab {
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    &:hover {
+        color: var(--primary);
+    }
+}
+
+.navLink {
+    color: var(--link-color);
+    width: 100%;
+    span {
+        font-size: 18px;
+    }
 }

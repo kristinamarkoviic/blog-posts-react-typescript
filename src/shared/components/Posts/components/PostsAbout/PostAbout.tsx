@@ -12,7 +12,7 @@ const PostAbout: FC = ({ children }) => {
     const content = (
         <section className={styles.page}>
             <Typography variant="h1" className={styles.title}>
-                Posts Details
+                Posts Details id post: {id}
             </Typography>
         </section>
     );

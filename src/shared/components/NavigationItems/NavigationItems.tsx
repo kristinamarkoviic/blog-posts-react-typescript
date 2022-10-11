@@ -5,7 +5,7 @@ import { INavigationLink } from 'shared/interfaces';
 import { menuItems } from 'shared/constants/navigationItems';
 //styles
 import styles from './NavigationItems.module.scss';
-import { Tabs, Tab } from '@mui/material';
+import { Tabs, ListItemText, ListItemButton } from '@mui/material';
 
 const NavigationItems: FC = ({ children }) => {
     const [routes, setRoutes] = useState<INavigationLink[]>(menuItems);
@@ -20,18 +20,22 @@ const NavigationItems: FC = ({ children }) => {
 
     return (
         <>
-            <Tabs value={currentTab} className={styles.navigation}>
+            <nav className={styles.navigation}>
                 {routes.map((route: INavigationLink) => (
-                    <Tab
-                        className={styles.tab}
-                        label={route.labelKey}
-                        value={route.pathname}
+                    <Link
                         key={route.id}
-                        to={route.pathname}
-                        component={Link}
-                    />
+                        to={{
+                            pathname: route.pathname,
+                        }}>
+                        <ListItemButton className={styles.navTab}>
+                            <ListItemText
+                                className={styles.navLink}
+                                primary={route.labelKey}
+                            />
+                        </ListItemButton>
+                    </Link>
                 ))}
-            </Tabs>
+            </nav>
         </>
     );
 };
