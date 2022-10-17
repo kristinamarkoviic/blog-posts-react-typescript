@@ -10,7 +10,6 @@ export abstract class HttpClient {
                 timeout: 120000,
             });
         }
-
         return HttpClient.instance;
     }
 }

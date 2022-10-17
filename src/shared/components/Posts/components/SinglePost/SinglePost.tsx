@@ -1,4 +1,7 @@
 import { FC, useEffect, useState } from 'react';
+//hooks
+import useUser from '../../hooks/useUser';
+import useComments from '../../hooks/useComments';
 //interfaces
 import { ICommentData } from '../../interfaces/ICommentData';
 import { IPostResponse } from '../../interfaces/IPostsResponse';
@@ -20,8 +23,20 @@ interface ISinglePost {
 
 const SinglePost: FC<ISinglePost> = (props) => {
     const { post, showComments, refetchCommnetsData } = props;
+    const { usersData, areAllUsersLoading } = useUser();
+    const { commentsData, areCommentsLoading, refetchComments } = useComments();
     const [user, setUser] = useState<IUserData | null>(null);
     const [comments, setComments] = useState<ICommentData[] | null>(null);
+
+    useEffect(() => {
+        const findUser = usersData.find((user) => user.id === post.userId);
+        if (refetchCommnetsData) refetchComments();
+        const findComments = commentsData.filter(
+            (comment) => comment.postId === post.id
+        );
+        if (findUser) setUser(findUser);
+        if (findComments.length) setComments(findComments);
+    }, [areAllUsersLoading, areCommentsLoading]);
 
     const renderComments =
         comments &&
@@ -33,7 +48,6 @@ const SinglePost: FC<ISinglePost> = (props) => {
 
     const renderUser = user && (
         <section className={styles.author}>
-            <img src={avatar} alt="Loader" className={styles.image} />
             <p className={styles.name}>{user.name}</p>
         </section>
     );
