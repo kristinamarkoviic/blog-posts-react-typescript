@@ -10,14 +10,16 @@ const PostsContextProvider: FC = (props) => {
     const { children } = props;
     const { postsData, arePostsLoading } = usePosts();
     const [filteredPosts, setFilteredPost] = useState<Array<IPostResponse>>([]);
+    const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
+        setLoading(arePostsLoading);
         if (arePostsLoading) return;
         setFilteredPost(postsData);
-    }, [postsData]);
+    }, [arePostsLoading]);
 
     const handleSearchPosts = (post: string) => {
-        const searchedPost = filteredPosts.filter((item) =>
+        const searchedPost = postsData.filter((item) =>
             item.title.toLowerCase().trim().includes(post.toLowerCase().trim())
         );
         setFilteredPost(searchedPost);
@@ -26,6 +28,7 @@ const PostsContextProvider: FC = (props) => {
     const contextData: IPostsContext = {
         filteredPosts,
         handleSearchPosts,
+        loading,
     };
 
     return (

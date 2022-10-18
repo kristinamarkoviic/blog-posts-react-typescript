@@ -11,7 +11,6 @@ const SearchInput: FC = ({ children }) => {
 
     const inputChangedHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setParams(e.target.value);
-        if (e.target.value.length < 3) return;
         handleSearchPosts(e.target.value);
     };
 

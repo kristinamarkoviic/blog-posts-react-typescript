@@ -1,15 +1,7 @@
-import { FC, useEffect, useState } from 'react';
-//hooks
-import useUser from '../../hooks/useUser';
-import useComments from '../../hooks/useComments';
-//interfaces
-import { ICommentData } from '../../interfaces/ICommentData';
+import { FC } from 'react';
 import { IPostResponse } from '../../interfaces/IPostsResponse';
-import { IUserData } from '../../interfaces/IUserData';
 //components
 import { PostsComment } from '../PostsComment';
-//assets
-import avatar from 'assets/icons/avatar.svg';
 //styles
 import styles from './SinglePost.module.scss';
 //mui
@@ -18,37 +10,22 @@ import { CardContent, Typography } from '@mui/material';
 interface ISinglePost {
     post: IPostResponse;
     showComments?: number;
-    refetchCommnetsData?: boolean;
 }
 
 const SinglePost: FC<ISinglePost> = (props) => {
-    const { post, showComments, refetchCommnetsData } = props;
-    const { usersData, areAllUsersLoading } = useUser();
-    const { commentsData, areCommentsLoading, refetchComments } = useComments();
-    const [user, setUser] = useState<IUserData | null>(null);
-    const [comments, setComments] = useState<ICommentData[] | null>(null);
-
-    useEffect(() => {
-        const findUser = usersData.find((user) => user.id === post.userId);
-        if (refetchCommnetsData) refetchComments();
-        const findComments = commentsData.filter(
-            (comment) => comment.postId === post.id
-        );
-        if (findUser) setUser(findUser);
-        if (findComments.length) setComments(findComments);
-    }, [areAllUsersLoading, areCommentsLoading]);
+    const { post, showComments } = props;
 
     const renderComments =
-        comments &&
-        comments
+        post.comments &&
+        post.comments
             .slice(0, showComments)
             .map((comment) => (
                 <PostsComment key={comment.id} comment={comment} />
             ));
 
-    const renderUser = user && (
+    const renderUser = post.user && (
         <section className={styles.author}>
-            <p className={styles.name}>{user.name}</p>
+            <p className={styles.name}>{post.user.name}</p>
         </section>
     );
 

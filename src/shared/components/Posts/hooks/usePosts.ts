@@ -11,7 +11,7 @@ interface IUsePosts {
 export const usePosts = (): IUsePosts => {
     const { data: postsData, isLoading: arePostsLoading } = useQuery(
         ['posts'],
-        postsApiService.getPosts,
+        postsApiService.getAllPosts,
         {
             staleTime: 60000,
             onSuccess: () => {

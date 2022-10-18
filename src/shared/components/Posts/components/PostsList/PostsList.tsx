@@ -6,28 +6,35 @@ import { Card } from '@mui/material';
 import { PostsContext } from '../../context/PostsContext';
 //components
 import { SinglePost } from '../SinglePost';
+import { Loader } from 'shared/components/Loader';
 //styles
 import styles from './PostsList.module.scss';
 
 const PostsList: FC = ({ children }) => {
-    const { filteredPosts } = useContext(PostsContext);
+    const { filteredPosts, loading } = useContext(PostsContext);
 
-    const renderPosts = filteredPosts.map((post, index) => (
-        <Card className={styles.postsCard} key={index}>
-            <Link to={`/posts/${post.id}`}>
-                <SinglePost post={post} key={post.id} showComments={2} />
-            </Link>
-        </Card>
-    ));
-    const renderMessage = filteredPosts.length === 0 && (
+    const renderMessage = filteredPosts.length === 0 && !loading && (
         <section className={styles.noPostsMessage}>There is no posts.</section>
     );
 
     return (
         <section className={styles.postsList}>
-            {renderPosts}
+            {loading ? (
+                <Loader />
+            ) : (
+                filteredPosts.map((post, index) => (
+                    <Card className={styles.postsCard} key={index}>
+                        <Link to={`/posts/${post.id}`}>
+                            <SinglePost
+                                post={post}
+                                key={post.id}
+                                showComments={2}
+                            />
+                        </Link>
+                    </Card>
+                ))
+            )}
             {renderMessage}
-            {children}
         </section>
     );
 };

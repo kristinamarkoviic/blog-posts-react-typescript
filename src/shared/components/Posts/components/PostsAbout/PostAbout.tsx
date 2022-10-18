@@ -7,10 +7,9 @@ import usePosts from '../../hooks/usePosts';
 //components
 import { PageLayout } from 'shared/components/PageLayout';
 import { SinglePost } from '../SinglePost';
+import { Loader } from 'shared/components/Loader';
 //styles
 import styles from './PostAbout.module.scss';
-import { Typography } from '@mui/material';
-
 const PostAbout: FC = ({ children }) => {
     const { id } = useParams();
     const [post, setPost] = useState<IPostResponse>();
@@ -21,20 +20,15 @@ const PostAbout: FC = ({ children }) => {
         const getSinglePost = postsData.find((post) => {
             return post.id === Number(id);
         });
-
-        if (getSinglePost) return setPost(getSinglePost);
+        if (getSinglePost) setPost(getSinglePost);
     }, [arePostsLoading]);
 
-    const content = post && (
+    const content = (
         <section className={styles.page}>
-            <SinglePost post={post} refetchCommnetsData={true} />
+            {arePostsLoading ? <Loader /> : post && <SinglePost post={post} />}
         </section>
     );
-    return (
-        <>
-            <PageLayout content={content}> </PageLayout>
-        </>
-    );
+    return <PageLayout content={content}></PageLayout>;
 };
 
 export default PostAbout;

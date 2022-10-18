@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { MainRoute } from 'shared/components/MainRoute';
 import { Posts } from 'shared/components/Posts';
 import { PostAbout } from 'shared/components/Posts/components/PostsAbout';
+import { PageNotFound } from 'shared/components/PageNotFound';
 //enums
 import { RoutesEnum } from 'shared/enums/RoutesEnum';
 //styles
@@ -21,7 +22,10 @@ const App: FC = () => {
                             element={<PostAbout />}
                         />
                     </Route>
-                    {/* <Route path={RoutesEnum.NOT_FOUND} element={<PageNotFound />} /> */}
+                    <Route
+                        path={RoutesEnum.NOT_FOUND}
+                        element={<PageNotFound />}
+                    />
                 </Routes>
             </BrowserRouter>
         </>
