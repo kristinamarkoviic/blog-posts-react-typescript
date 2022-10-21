@@ -6,9 +6,7 @@ interface IPageLayout {
     content: ReactNode;
 }
 
-const PageLayout: FC<IPageLayout> = (props) => {
-    const { content } = props;
-
+const PageLayout: FC<IPageLayout> = ({ content }) => {
     return (
         <main className={styles.mainContainer}>
             <div className={styles.content}>{content}</div>

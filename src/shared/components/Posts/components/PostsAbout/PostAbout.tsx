@@ -10,22 +10,22 @@ import { SinglePost } from '../SinglePost';
 import { Loader } from 'shared/components/Loader';
 //styles
 import styles from './PostAbout.module.scss';
+
 const PostAbout: FC = ({ children }) => {
     const { id } = useParams();
-    const [post, setPost] = useState<IPostResponse>();
+    const { postsData, isLoading } = usePosts();
 
-    const { postsData, arePostsLoading } = usePosts();
-
-    useEffect(() => {
-        const getSinglePost = postsData.find((post) => {
-            return post.id === Number(id);
-        });
-        if (getSinglePost) setPost(getSinglePost);
-    }, [arePostsLoading]);
+    const singlePost = postsData.find((post) => {
+        return post.id === Number(id);
+    });
 
     const content = (
         <section className={styles.page}>
-            {arePostsLoading ? <Loader /> : post && <SinglePost post={post} />}
+            {isLoading ? (
+                <Loader />
+            ) : (
+                singlePost && <SinglePost post={singlePost} />
+            )}
         </section>
     );
     return <PageLayout content={content}></PageLayout>;

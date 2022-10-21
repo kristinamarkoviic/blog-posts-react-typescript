@@ -4,7 +4,7 @@ import { PostsContext } from '../Posts/context/PostsContext';
 //styles
 import styles from './SearchInput.module.scss';
 
-const SearchInput: FC = ({ children }) => {
+const SearchInput: FC = (props) => {
     const [params, setParams] = useState<string>('');
 
     const { handleSearchPosts } = useContext(PostsContext);

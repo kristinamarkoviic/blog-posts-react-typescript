@@ -6,10 +6,10 @@ import { postsApiService } from '../services/postsApiService';
 
 interface IUsePosts {
     postsData: IPostResponse[];
-    arePostsLoading: boolean;
+    isLoading: boolean;
 }
 export const usePosts = (): IUsePosts => {
-    const { data: postsData, isLoading: arePostsLoading } = useQuery(
+    const { data: postsData, isLoading: isLoading } = useQuery(
         ['posts'],
         postsApiService.getAllPosts,
         {
@@ -25,7 +25,7 @@ export const usePosts = (): IUsePosts => {
 
     return {
         postsData: postsData ?? ([] as IPostResponse[]),
-        arePostsLoading,
+        isLoading,
     };
 };
 

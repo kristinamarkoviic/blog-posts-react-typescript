@@ -7,28 +7,21 @@ import { PostAbout } from 'shared/components/Posts/components/PostsAbout';
 import { PageNotFound } from 'shared/components/PageNotFound';
 //enums
 import { RoutesEnum } from 'shared/enums/RoutesEnum';
-//styles
-import styles from './App.scss';
 
 const App: FC = () => {
     return (
-        <>
-            <BrowserRouter>
-                <Routes>
-                    <Route element={<MainRoute />}>
-                        <Route path={RoutesEnum.HOME} element={<Posts />} />
-                        <Route
-                            path={RoutesEnum.SINGLE_POST}
-                            element={<PostAbout />}
-                        />
-                    </Route>
+        <BrowserRouter>
+            <Routes>
+                <Route element={<MainRoute />}>
+                    <Route path={RoutesEnum.HOME} element={<Posts />} />
                     <Route
-                        path={RoutesEnum.NOT_FOUND}
-                        element={<PageNotFound />}
+                        path={RoutesEnum.SINGLE_POST}
+                        element={<PostAbout />}
                     />
-                </Routes>
-            </BrowserRouter>
-        </>
+                </Route>
+                <Route path={RoutesEnum.NOT_FOUND} element={<PageNotFound />} />
+            </Routes>
+        </BrowserRouter>
     );
 };
 
