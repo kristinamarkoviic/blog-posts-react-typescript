@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { PageLayout } from '../PageLayout';
 import { PostsFilter } from './components/PostsFilter';
 
-const Posts: FC = (props) => {
+const Posts: FC = () => {
     return <PageLayout content={<PostsFilter />} />;
 };
 

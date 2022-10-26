@@ -1,7 +1,5 @@
-import { FC, useState, useEffect } from 'react';
+import { FC } from 'react';
 import { useParams } from 'react-router-dom';
-//interfaces
-import { IPostResponse } from '../../interfaces/IPostsResponse';
 //hooks
 import usePosts from '../../hooks/usePosts';
 //components
@@ -11,21 +9,21 @@ import { Loader } from 'shared/components/Loader';
 //styles
 import styles from './PostAbout.module.scss';
 
-const PostAbout: FC = ({ children }) => {
+const PostAbout: FC = () => {
     const { id } = useParams();
-    const { postsData, isLoading } = usePosts();
+    const { posts, isLoading } = usePosts();
 
-    const singlePost = postsData.find((post) => {
+    if (isLoading) {
+        return <Loader />;
+    }
+
+    const findSinglePost = posts.find((post) => {
         return post.id === Number(id);
     });
 
     const content = (
         <section className={styles.page}>
-            {isLoading ? (
-                <Loader />
-            ) : (
-                singlePost && <SinglePost post={singlePost} />
-            )}
+            {findSinglePost && <SinglePost post={findSinglePost} />}
         </section>
     );
     return <PageLayout content={content}></PageLayout>;

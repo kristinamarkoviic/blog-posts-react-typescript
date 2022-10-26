@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 //interfaces
 import { ICommentData } from '../../interfaces/ICommentData';
 //mui

@@ -3,7 +3,7 @@ import { FC } from 'react';
 import loaderImage from '../../../assets/icons/loader.svg';
 import styles from './Loader.module.scss';
 
-const Loader: FC = (props) => {
+const Loader: FC = () => {
     return (
         <section className={styles.loader}>
             <p className={styles.text}>Loading...</p>

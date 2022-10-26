@@ -15,6 +15,10 @@ interface ISinglePost {
 const SinglePost: FC<ISinglePost> = (props) => {
     const { post, showComments } = props;
 
+    if (!post) {
+        return null;
+    }
+
     const renderComments =
         post.comments &&
         post.comments
@@ -30,24 +34,22 @@ const SinglePost: FC<ISinglePost> = (props) => {
     );
 
     return (
-        <>
-            <CardContent className={styles.post}>
-                <Typography variant="h1" className={styles.id}>
-                    #{post.id}
-                </Typography>
-                {renderUser}
-                <Typography variant="h2" className={styles.title}>
-                    {post.title}
-                </Typography>
-                <Typography className={styles.bodyText} variant="body1">
-                    {post.body}
-                </Typography>
-                <Typography className={styles.commentsHeader} variant="body1">
-                    Comments
-                </Typography>
-                {renderComments}
-            </CardContent>
-        </>
+        <CardContent className={styles.post}>
+            <Typography variant="h1" className={styles.id}>
+                #{post.id}
+            </Typography>
+            {renderUser}
+            <Typography variant="h2" className={styles.title}>
+                {post.title}
+            </Typography>
+            <Typography className={styles.bodyText} variant="body1">
+                {post.body}
+            </Typography>
+            <Typography className={styles.commentsHeader} variant="body1">
+                Comments
+            </Typography>
+            {renderComments}
+        </CardContent>
     );
 };
 export default SinglePost;

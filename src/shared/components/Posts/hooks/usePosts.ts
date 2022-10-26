@@ -5,26 +5,17 @@ import { IPostResponse } from '../interfaces/IPostsResponse';
 import { postsApiService } from '../services/postsApiService';
 
 interface IUsePosts {
-    postsData: IPostResponse[];
+    posts: IPostResponse[];
     isLoading: boolean;
 }
 export const usePosts = (): IUsePosts => {
-    const { data: postsData, isLoading: isLoading } = useQuery(
+    const { data: posts, isLoading: isLoading } = useQuery(
         ['posts'],
-        postsApiService.getAllPosts,
-        {
-            staleTime: 60000,
-            onSuccess: () => {
-                console.log('All posts are here.');
-            },
-            onError: () => {
-                console.error('Posts Api service error');
-            },
-        }
+        postsApiService.getAllPosts
     );
 
     return {
-        postsData: postsData ?? ([] as IPostResponse[]),
+        posts: posts ?? ([] as IPostResponse[]),
         isLoading,
     };
 };

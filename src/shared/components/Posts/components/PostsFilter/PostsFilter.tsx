@@ -5,7 +5,7 @@ import { SearchInput } from 'shared/components/SearchInput';
 //styles
 import styles from './PostsFilter.module.scss';
 
-const PostsFilter: FC = (props) => {
+const PostsFilter: FC = () => {
     return (
         <section className={styles.filterPage}>
             <SearchInput />

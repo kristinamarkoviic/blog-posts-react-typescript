@@ -8,18 +8,18 @@ import { IPostsContext, PostsContext } from '../PostsContext';
 
 const PostsContextProvider: FC = (props) => {
     const { children } = props;
-    const { postsData, isLoading } = usePosts();
+    const { posts, isLoading } = usePosts();
     const [filteredPosts, setFilteredPost] = useState<Array<IPostResponse>>([]);
-    const [loading, setLoading] = useState<boolean>(false);
+    const [loading, setIsLoading] = useState<boolean>(false);
 
     useEffect(() => {
-        setLoading(isLoading);
+        setIsLoading(isLoading);
         if (isLoading) return;
-        setFilteredPost(postsData);
+        setFilteredPost(posts);
     }, [isLoading]);
 
     const handleSearchPosts = (post: string) => {
-        const searchedPost = postsData.filter((item) => {
+        const searchedPost = posts.filter((item) => {
             return item.title
                 .toLowerCase()
                 .trim()
@@ -28,14 +28,14 @@ const PostsContextProvider: FC = (props) => {
         setFilteredPost(searchedPost);
     };
 
-    const contextData: IPostsContext = {
+    const postsData: IPostsContext = {
         filteredPosts,
         handleSearchPosts,
         loading,
     };
 
     return (
-        <PostsContext.Provider value={contextData}>
+        <PostsContext.Provider value={postsData}>
             {children}
         </PostsContext.Provider>
     );

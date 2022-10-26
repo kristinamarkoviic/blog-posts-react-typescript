@@ -10,30 +10,30 @@ import { Loader } from 'shared/components/Loader';
 //styles
 import styles from './PostsList.module.scss';
 
-const PostsList: FC = ({ children }) => {
+const PostsList: FC = () => {
     const { filteredPosts, loading } = useContext(PostsContext);
+    const noPosts = filteredPosts.length === 0 && !loading;
+    if (loading) {
+        return <Loader />;
+    }
 
-    const renderMessage = filteredPosts.length === 0 && !loading && (
+    const renderMessage = noPosts && (
         <section className={styles.noPostsMessage}>There is no posts.</section>
     );
 
     return (
         <section className={styles.postsList}>
-            {loading ? (
-                <Loader />
-            ) : (
-                filteredPosts.map((post, index) => (
-                    <Card className={styles.postsCard} key={index}>
-                        <Link to={`/posts/${post.id}`}>
-                            <SinglePost
-                                post={post}
-                                key={post.id}
-                                showComments={2}
-                            />
-                        </Link>
-                    </Card>
-                ))
-            )}
+            {filteredPosts.map((post) => (
+                <Card className={styles.postsCard} key={post.id}>
+                    <Link to={`/posts/${post.id}`}>
+                        <SinglePost
+                            post={post}
+                            key={post.id}
+                            showComments={2}
+                        />
+                    </Link>
+                </Card>
+            ))}
             {renderMessage}
         </section>
     );

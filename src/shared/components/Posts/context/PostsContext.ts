@@ -10,7 +10,7 @@ export interface IPostsContext {
 
 const initalValues = {
     filteredPosts: [],
-    handleSearchPosts: (post: string) => {},
+    handleSearchPosts: () => null,
     loading: false,
 };
 

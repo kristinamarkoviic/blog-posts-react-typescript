@@ -6,7 +6,7 @@ import { NavigationItems } from '../NavigationItems';
 import styles from './Header.module.scss';
 import logo from '../../../logo.svg';
 
-const Header: FC = ({ children }) => {
+const Header: FC = () => {
     return (
         <header className={styles.header}>
             <img src={logo} className={styles.logo} />

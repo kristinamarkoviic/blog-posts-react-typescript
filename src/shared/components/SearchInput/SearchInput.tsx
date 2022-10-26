@@ -1,35 +1,35 @@
-import { FC, useState, ChangeEvent, useContext } from 'react';
+import { FC, useState, ChangeEvent, useContext, useCallback } from 'react';
 //context
 import { PostsContext } from '../Posts/context/PostsContext';
 //styles
 import styles from './SearchInput.module.scss';
 
-const SearchInput: FC = (props) => {
+const SearchInput: FC = () => {
     const [params, setParams] = useState<string>('');
-
     const { handleSearchPosts } = useContext(PostsContext);
 
     const inputChangedHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setParams(e.target.value);
-        handleSearchPosts(e.target.value);
+        // console.log(params, 'params change hanlder');
+        //handleSearchPosts(e.target.value);
     };
 
+    const handleClick = useCallback(() => {
+        handleSearchPosts(params);
+    }, [params]);
+
     return (
-        <>
-            <section className={styles.search}>
-                <input
-                    className={styles.bar}
-                    value={params}
-                    onChange={inputChangedHandler}
-                    placeholder="Search Example: title"
-                />
-                <button
-                    className={styles.button}
-                    onClick={() => handleSearchPosts(params)}>
-                    Search
-                </button>
-            </section>
-        </>
+        <section className={styles.search}>
+            <input
+                className={styles.bar}
+                value={params}
+                onChange={inputChangedHandler}
+                placeholder="Search Example: title"
+            />
+            <button className={styles.button} onClick={handleClick}>
+                Search
+            </button>
+        </section>
     );
 };
 
