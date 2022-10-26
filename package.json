@@ -2,6 +2,11 @@
   "name": "blog-posts-react-typescript",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview"
+  },
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
@@ -26,12 +31,6 @@
     "vite-plugin-environment": "^1.1.2",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -51,7 +50,7 @@
     ]
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^1.0.4",
+    "@vitejs/plugin-react": "^1.1.1",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "^7.26.0",

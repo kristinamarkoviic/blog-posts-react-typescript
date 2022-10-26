@@ -5,8 +5,7 @@ export abstract class HttpClient {
     public static getInstance(): AxiosInstance {
         if (!HttpClient.instance) {
             HttpClient.instance = axios.create({
-                baseURL: 'https://jsonplaceholder.typicode.com/',
-                // baseURL: import.meta.env.VITE_APP_API_URL,
+                baseURL: import.meta.env.VITE_APP_API_URL,
                 timeout: 120000,
             });
         }
