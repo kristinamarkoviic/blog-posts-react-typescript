@@ -1,0 +1,29 @@
+@use 'styles/media' as *;
+
+.postsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    .postsCard {
+        a {
+            color: unset;
+            text-decoration: unset;
+        }
+        width: 370px;
+        &:hover {
+            cursor: pointer;
+            transition: 0.5 all;
+            background-color: var(--body-secondary-bg);
+        }
+        @media screen and (max-width: $tablet) {
+            width: 100%;
+        }
+    }
+}
+.noPostsMessage {
+    width: 100%;
+    padding: 40px 24px;
+    text-align: center;
+    background-color: var(--body-secondary-bg);
+}

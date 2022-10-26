@@ -1,5 +1,4 @@
 import axios, { AxiosInstance } from 'axios';
-
 export abstract class HttpClient {
     private static instance: AxiosInstance;
 
