@@ -10,8 +10,9 @@ const SearchInput: FC = () => {
 
     const inputChangedHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setParams(e.target.value);
-        // console.log(params, 'params change hanlder');
-        //handleSearchPosts(e.target.value);
+        if (e.target.value.length === 0) {
+            handleSearchPosts(e.target.value);
+        }
     };
 
     const handleClick = useCallback(() => {
