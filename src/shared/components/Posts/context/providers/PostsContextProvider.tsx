@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 //hooks
 import usePosts from '../../hooks/usePosts';
 //interfaces
@@ -6,17 +6,9 @@ import { IPostResponse } from '../../interfaces/IPostsResponse';
 //context
 import { IPostsContext, PostsContext } from '../PostsContext';
 
-const PostsContextProvider: FC = (props) => {
-    const { children } = props;
+const PostsContextProvider: FC = ({ children }) => {
     const { posts, isLoading } = usePosts();
     const [filteredPosts, setFilteredPost] = useState<Array<IPostResponse>>([]);
-    const [loading, setIsLoading] = useState<boolean>(false);
-
-    useEffect(() => {
-        setIsLoading(isLoading);
-        if (isLoading) return;
-        setFilteredPost(posts);
-    }, [isLoading]);
 
     const handleSearchPosts = (post: string) => {
         const searchedPost = posts.filter((item) => {
@@ -29,9 +21,9 @@ const PostsContextProvider: FC = (props) => {
     };
 
     const postsData: IPostsContext = {
-        filteredPosts,
+        filteredPosts: filteredPosts.length ? filteredPosts : posts,
         handleSearchPosts,
-        loading,
+        loading: isLoading,
     };
 
     return (

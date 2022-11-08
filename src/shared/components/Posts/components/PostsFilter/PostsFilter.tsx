@@ -9,7 +9,7 @@ const PostsFilter: FC = () => {
     return (
         <section className={styles.filterPage}>
             <SearchInput />
-            <PostsList />
+            <PostsList postsToShow={6} />
         </section>
     );
 };

@@ -8,27 +8,6 @@ import { apiService } from 'core/api/services/ApiService';
 import { apiConstants } from '../../../constants//apiConstants';
 
 class PostsApiService {
-    async getPosts(): Promise<IPostResponse[]> {
-        const posts = apiService.responseHandler(
-            await apiService.get<IPostResponse[]>(apiConstants.API_POSTS)
-        );
-        return posts;
-    }
-
-    async getAllUsers(): Promise<IUserData[]> {
-        const users = apiService.responseHandler(
-            await apiService.get<IUserData[]>(apiConstants.API_USERS)
-        );
-        return users;
-    }
-
-    async getAllComments(): Promise<ICommentData[]> {
-        const comments = apiService.responseHandler(
-            await apiService.get<ICommentData[]>(apiConstants.API_COMMENTS)
-        );
-        return comments;
-    }
-
     async getAllPosts(): Promise<IPostResponse[]> {
         const posts = apiService.responseHandler(
             await apiService.get<IPostResponse[]>(apiConstants.API_POSTS)

@@ -10,7 +10,11 @@ export default defineConfig({
     build: {
         chunkSizeWarningLimit: 1600,
     },
-    plugins: [react(), tsconfigPaths(), EnvironmentPlugin("all")],
+    plugins: [react(
+        {
+            include: "**/*.tsx",
+        }
+    ), tsconfigPaths(), EnvironmentPlugin("all")],
     resolve: {
         alias: [
             {

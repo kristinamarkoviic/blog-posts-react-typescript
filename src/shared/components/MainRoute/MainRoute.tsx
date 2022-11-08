@@ -3,7 +3,6 @@ import { Outlet } from 'react-router-dom';
 //components
 import { Header } from 'shared/components/Header';
 import { Loader } from 'shared/components/Loader';
-import { Footer } from '../Footer';
 
 const MainRoute: FC = () => {
     return (
@@ -12,7 +11,6 @@ const MainRoute: FC = () => {
             <Suspense fallback={<Loader />}>
                 <Outlet />
             </Suspense>
-            <Footer />
         </>
     );
 };
