@@ -1,0 +1,36 @@
+@use 'styles/media' as *;
+.search {
+    width: 400px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-bottom: 10px;
+
+    @media screen and (max-width: $tablet) {
+        width: 300px;
+    }
+}
+
+.bar {
+    width: 90%;
+    outline: none;
+    border: 1px solid;
+    border-color: var(--border-color);
+    height: 40px;
+    padding-left: 20px;
+    font-size: 14px;
+}
+
+.button {
+    border: none;
+    padding: 10px;
+    background-color: var(--link-color);
+    color: var(--white);
+    transition: 0.3s all;
+    font-size: 14px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: var(--tertiary);
+    }
+}

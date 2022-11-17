@@ -25,6 +25,7 @@ module.exports = {
         },
     },
     rules: {
+        '@typescript-eslint/no-empty-function': 1,
         'no-console': 'warn',
         eqeqeq: ['error', 'always'],
         'react/react-in-jsx-scope': 'off',

@@ -1,0 +1,12 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: var(--color-box-shadow);
+    padding-right: var(--desktop-outer-padding);
+    padding-left: var(--desktop-outer-padding);
+
+    .logo {
+        width: 40px;
+    }
+}

@@ -1,0 +1,33 @@
+@use 'styles/media' as *;
+
+.mainContainer {
+    width: 100%;
+    padding-right: var(--mobile-outer-padding);
+    padding-left: var(--mobile-outer-padding);
+
+    @media screen and (min-width: $tablet) {
+        padding-right: var(--tablet-outer-padding);
+        padding-left: var(--tablet-outer-padding);
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding-right: var(--desktop-outer-padding);
+        padding-left: var(--desktop-outer-padding);
+    }
+}
+
+.content {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+
+    @media screen and (min-width: $tablet) {
+        flex-direction: row;
+        max-width: 808px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        max-width: 1320px;
+    }
+}

@@ -1,0 +1,40 @@
+.post {
+    .id {
+        font-size: 18px;
+        height: 40px;
+        line-height: 40px;
+    }
+    .title {
+        font-size: 20px;
+        line-height: normal;
+        text-align: center;
+        text-transform: capitalize;
+        font-weight: bold;
+        min-height: 80px;
+    }
+    .bodyText {
+        text-transform: capitalize;
+        padding: 24px 0;
+        font-size: 16px;
+        min-height: 150px;
+    }
+    .author {
+        padding: 24px 0;
+        display: flex;
+        align-items: center;
+        .avatarIcon {
+            width: 30px;
+            height: 30px;
+        }
+        .name {
+            font-size: 18px;
+            padding-left: 10px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+    }
+    .commentsHeader {
+        font-weight: bold;
+        font-size: 14px;
+    }
+}

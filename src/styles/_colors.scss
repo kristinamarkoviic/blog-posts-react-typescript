@@ -1,0 +1,24 @@
+:root {
+    --black: black;
+    --white: white;
+
+    --primary: #292929;
+    --primary-dark: var(--black);
+    --primary-light: #4f4f4f;
+
+    --secondary: #00ffff;
+    --secondary-dark: #008080;
+    --secondary-light: #ccffff;
+
+    --tertiary: #191919;
+
+    --success: #008000;
+    --error: #8f0a00;
+    --warning: #af5400;
+
+    --box-shadow: 20px -4px 11px #918a8a;
+
+    --border-color: #e6e6e6;
+    --link-color: #4d5066;
+    --page-color: #f6f6f6;
+}

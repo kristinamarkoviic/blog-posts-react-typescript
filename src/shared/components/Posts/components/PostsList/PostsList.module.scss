@@ -1,0 +1,38 @@
+@use 'styles/media' as *;
+
+.postsList {
+    height: 700px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+    div {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        .postsCard {
+            width: 360px;
+            a {
+                color: unset;
+                text-decoration: unset;
+            }
+            &:hover {
+                cursor: pointer;
+                transition: 0.5 all;
+                background-color: var(--body-secondary-bg);
+            }
+            @media screen and (max-width: $tablet) {
+                width: 100%;
+            }
+        }
+    }
+}
+.noPostsMessage {
+    width: 100%;
+    padding: 40px 24px;
+    text-align: center;
+    background-color: var(--body-secondary-bg);
+}

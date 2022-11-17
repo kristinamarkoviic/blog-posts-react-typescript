@@ -1,0 +1,16 @@
+.loader {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.image {
+    width: 90px;
+    height: 90px;
+}
+
+.text {
+    color: var(--primary-light);
+    font-size: 24px;
+}
